@@ -40,7 +40,18 @@ def bubble_sort(arr: List[int]):
                 arr[j] = tmp
 
 
+# 배열을 두 부분으로 나누어 각각의 배열을 정렬한 다음, 두 배열을 하나로 합치는 합병 정렬을 실행한다.
+# 시간 복잡도: O(n * log n)
+def merge_sort(arr: List[int], left_index: int, right_index: int):
+    if left_index < right_index:
+        # 특정 계산을 위해 알고리즘에서 임의로 선택되는 값을 기준값 또는 피벗 (pivot)이라고 한다.
+        pivot_index = int((left_index + right_index) / 2)
+
+        # TODO: ...
+
+
 # 정해진 배열에서 최솟값을 선택해 맨 왼쪽으로 옮기는 선택 정렬을 실행한다.
+# 시간 복잡도: O(n^2)
 def selection_sort(arr: List[int]):
     n = len(arr)
 
