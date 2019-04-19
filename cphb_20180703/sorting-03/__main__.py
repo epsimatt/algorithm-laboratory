@@ -5,6 +5,32 @@ O(n * log n)이라고 알려져 있다.
 
 버블 정렬 (bubble sort)처럼 구현이 간단한 알고리즘의 시간 복잡도는 O(n^2) 정도이다. 이러한 알고리즘은 보통 두 개의 중첩된
 반복문이 있고 코드가 비교적 단순하고 짧은 것이 특징이다.
+
+...
+
+분할 정복 (divide and conquer)는 복잡한 문제를 작은 문제로 분해한 뒤에, 작은 문제의 해답을 모아 원래의 문제의 답을 구하는
+문제 해결 방법이다. 분할 정복은 크게 세 단계로 나눌 수 있다. 첫 번째 단계는 복잡한 문제를 작은 문제로 분해하는
+분해 (divide) 과정, 두 번째 단계는 작은 문제의 해답을 구하는 정복 (conquer) 과정이고, 마지막 단계는 작은 문제의 해답을
+합치는 결합 (combine) 과정이다. 분할 정복 알고리즘의 예로는 이진 탐색 (binary search), 병합 정렬 (merge sort), 퀵 정렬 (quick sort),
+팀 정렬 (https://hackernoon.com/timsort-the-fastest-sorting-algorithm-youve-never-heard-of-36b28417f399) 등이
+있다.
+
+...
+
+배열에서 특정 원소를 찾는 일반적인 방법은 아래와 같이 `for` 반복문을 사용해서 배열에 들어 있는 모든 원소를 확인하는 것이다.
+
+```
+for (int i = 0; i < n; i++) {
+    if (array[i] == x) {
+        // x found at index i
+    }
+}
+```
+
+이 코드는 최악의 경우 특정 원소를 찾기 위해 배열의 모든 원소를 확인해야 하므로 시간 복잡도는 `O(n)`이다.
+배열의 정렬되지 않은 경우 이 코드는 최선의 선택이 될 수 있지만, 배열이 정렬되어 있는 경우에는 상황이 달라진다.
+배열이 이미 정렬되어 있는 경우, 이진 탐색 알고리즘을 사용하면 시간 복잡도가 `O(log n)`이 되어, 실행 시간이 매우 짧아진다.
+
 """
 
 from typing import List
@@ -14,20 +40,6 @@ import timeit
 # 배열의 인접한 두 원소의 순서를 바꾸어, 큰 원소일수록 오른쪽으로 가게 하는 버블 정렬을 실행한다.
 # 시간 복잡도: O(n^2)
 def bubble_sort(arr: List[int]):
-    """
-    fn bubble_sort(v: &mut Vec<usize>) {
-        for i in 1..(v.len()) {
-            for j in 0..(v.len() - i) {
-                if v[j] > v[j + 1] {
-                    // https://doc.rust-lang.org/std/primitive.slice.html#method.swap
-                    let t = v[j + 1];
-                    v[j + 1] = v[j];
-                    v[j] = t;
-                }
-            }
-        }
-    }
-    """
     n = len(arr)
 
     # 정렬이 끝난 원소의 index
@@ -43,12 +55,23 @@ def bubble_sort(arr: List[int]):
 # 배열을 두 부분으로 나누어 각각의 배열을 정렬한 다음, 두 배열을 하나로 합치는 합병 정렬을 실행한다.
 # 시간 복잡도: O(n * log n)
 def merge_sort(arr: List[int], left_index: int, right_index: int):
+    """
+    병합 정렬의 순서
+
+    1. `left_index`와 `right_index`의 값이 같다면, 아무 것도 하지 않는다.
+    2. 배열의 기준값의 index를 구한다.
+    3. 배열을 두 개로 나누고 정렬한다.
+    4. 정렬된 배열 두 개를 하나로 합친다.
+    """
+
+    # 특정 계산을 위해 알고리즘에서 임의로 선택되는 값을 기준값 또는 피벗 (pivot)이라고 한다.
+    pivot_index = int((left_index + right_index) / 2)
+
     if left_index < right_index:
-        # 특정 계산을 위해 알고리즘에서 임의로 선택되는 값을 기준값 또는 피벗 (pivot)이라고 한다.
-        pivot_index = int((left_index + right_index) / 2)
+        merge_sort(arr, left_index, pivot_index)
+        merge_sort(arr, pivot_index + 1, right_index)
 
         # TODO: ...
-
 
 # 정해진 배열에서 최솟값을 선택해 맨 왼쪽으로 옮기는 선택 정렬을 실행한다.
 # 시간 복잡도: O(n^2)
@@ -71,11 +94,17 @@ def selection_sort(arr: List[int]):
 
 
 if __name__ == '__main__':
+    """
     result_bubble = timeit.timeit('bubble_sort([4, 8, 6, 5, 2, 1, 3, 9, 7, 10])',
                               setup="from __main__ import bubble_sort", number=10000)
 
     result_selection = timeit.timeit('selection_sort([4, 8, 6, 5, 2, 1, 3, 9, 7, 10])',
                                   setup="from __main__ import selection_sort", number=10000)
 
-    # 0.27574128, 0.20391832799999998
-    print(result_bubble, result_selection)
+    result_merge = timeit.timeit('merge_sort([4, 8, 6, 5, 2, 1, 3, 9, 7, 10], 0, 9)',
+                                     setup="from __main__ import merge_sort", number=10000)
+
+    # 0.146697201, 0.131508986, 0.551859871
+    print(result_bubble, result_selection, result_merge)
+    """
+    merge_sort([1, 3, 6, 2, 8, 2, 5, 9], 0, 7)
