@@ -71,7 +71,33 @@ def merge_sort(arr: List[int], left_index: int, right_index: int):
         merge_sort(arr, left_index, pivot_index)
         merge_sort(arr, pivot_index + 1, right_index)
 
-        # TODO: ...
+        left_arr = arr[left_index:(pivot_index + 1)]
+        right_arr = arr[(pivot_index + 1):(right_index + 1)]
+
+        i = 0
+        j = 0
+        k = left_index
+
+        while i < len(left_arr) and j < len(right_arr):
+            if left_arr[i] < right_arr[j]:
+                arr[k] = left_arr[i]
+                i += 1
+            else:
+                arr[k] = right_arr[j]
+                j += 1
+
+            k += 1
+
+        while i < len(left_arr):
+            arr[k] = left_arr[i]
+            i += 1
+            k += 1
+
+        while j < len(right_arr):
+            arr[k] = right_arr[j]
+            j += 1
+            k += 1
+            
 
 # 정해진 배열에서 최솟값을 선택해 맨 왼쪽으로 옮기는 선택 정렬을 실행한다.
 # 시간 복잡도: O(n^2)
@@ -94,7 +120,6 @@ def selection_sort(arr: List[int]):
 
 
 if __name__ == '__main__':
-    """
     result_bubble = timeit.timeit('bubble_sort([4, 8, 6, 5, 2, 1, 3, 9, 7, 10])',
                               setup="from __main__ import bubble_sort", number=10000)
 
@@ -104,7 +129,5 @@ if __name__ == '__main__':
     result_merge = timeit.timeit('merge_sort([4, 8, 6, 5, 2, 1, 3, 9, 7, 10], 0, 9)',
                                      setup="from __main__ import merge_sort", number=10000)
 
-    # 0.146697201, 0.131508986, 0.551859871
+    # 0.284700311 0.251777021 0.5708897279999999
     print(result_bubble, result_selection, result_merge)
-    """
-    merge_sort([1, 3, 6, 2, 8, 2, 5, 9], 0, 7)
