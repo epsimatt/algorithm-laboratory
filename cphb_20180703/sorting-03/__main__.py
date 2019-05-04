@@ -37,6 +37,40 @@ from typing import List
 
 import timeit
 
+
+# 선형 검색 알고리즘을 사용해 배열의 모든 원소를 하나하나 확인해가며 특정 원소를 찾는다.
+# 시간 복잡도: O(n)
+def linear_search(arr: List[int], x: int) -> int:
+    for index, element in enumerate(arr):
+        if element == x:
+            return index
+
+    return -1
+
+
+# 이진 탐색 알고리즘을 사용해 정렬되어 있는 배열에서 특정한 원소를 찾는다.
+# 시간 복잡도: O(log n)
+def binary_search(arr: List[int], x: int) -> int:
+    left_index = 0
+    right_index = len(arr) - 1
+
+    while left_index < right_index:
+        pivot_index = int((left_index + right_index) / 2)
+
+        if arr[pivot_index] == x:
+            return pivot_index
+
+        # `pivot_index`에 있는 원소가 `x`보다 작으면?
+        if arr[pivot_index] < x:
+            # `pivot_index` 다음부터 검색
+            left_index = pivot_index + 1
+        else:
+            # `pivot_index` 바로 전까지 검색
+            right_index = pivot_index - 1
+
+    return -1
+
+
 # 배열의 인접한 두 원소의 순서를 바꾸어, 큰 원소일수록 오른쪽으로 가게 하는 버블 정렬을 실행한다.
 # 시간 복잡도: O(n^2)
 def bubble_sort(arr: List[int]):
