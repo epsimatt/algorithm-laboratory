@@ -5,7 +5,7 @@
 
 1. 동적 배열 (dynamic array)
 - 프로그램 실행 중에 크기를 변경할 수 있는 배열을 동적 배열이라고 한다. Rust의 대표적인 동적 배열 자료 구조로는
-`std::vec::Vec`이 있다. (`A contiguous growable array type, written Vec<T> but pronounced 'vector'.`)
+`std::vec::Vec`이 있다. ("A contiguous growable array type, written `Vec<T>` but pronounced 'vector'.")
 - 동적 배열의 내부에는 배열이 들어있으며 필요할 때마다 이 배열의 크기를 늘려서 사용한다.
 - Rust의 `std::string::String`도 동적 배열의 한 종류라고 할 수 있다.
 
