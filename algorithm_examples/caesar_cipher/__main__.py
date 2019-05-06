@@ -49,9 +49,9 @@ def caesar_decipher_idx1(cipher_text: str, shift: int) -> str:
 
 
 if __name__ == '__main__':
-
     assert caesar_cipher('HELLO', 3) == 'KHOOR'
     assert caesar_cipher_idx1('WXYZ', 3) == 'ZABC'
 
     assert caesar_decipher('KHOOR', 3) == 'HELLO'
     assert caesar_decipher_idx1('ZABC', 3) == 'WXYZ'
+	
