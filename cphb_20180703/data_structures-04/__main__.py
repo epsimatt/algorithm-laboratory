@@ -29,8 +29,8 @@
 항상 맨 위에 있는 원소만 접근할 수 있다.
 
 7. 큐 (queue)
-- 큐는 스택과 마찬가지로 맨 위에 원소 삽입하기와 맨 위로부터 원소 삭제하기, 이 두 가지 기능을 제공하는 자료 구조이지만,
-스택과는 달리 첫 번째 원소와 맨 마지막 원소에 접근할 수 있다.
+- 큐 또한 시간 복잡도가 `O(1)`인 두 개의 기능, 큐의 맨 뒤에 원소 삽입하기와 큐의 맨 앞에 있는 원소 삭제하기,
+이 두 가지 기능을 제공하는 자료 구조이다. 큐에서는 항상 첫 번째 원소와 맨 마지막 원소에만 접근할 수 있다.
 
 8. 연결 리스트 (linked list)
 - 연결 리스트는 구조체가 사슬처럼 연결되어 있는 구조를 가지는데, 연결 리스트의 각 구조체를 노드 (node)라고 한다. 하나의
@@ -39,6 +39,7 @@
 가까울수록 접근 속도가 느려진다는 단점이 있다.
 
 * https://docs.python.org/3/tutorial/datastructures.html
+* https://stackoverflow.com/questions/10974922/what-is-the-basic-difference-between-stack-and-queue
 """
 
 from collections import deque
