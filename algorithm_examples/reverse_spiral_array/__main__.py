@@ -84,7 +84,6 @@ def reverse_spiral_array_v2(N: int):
     current = 1
 
     while N > 1 and result[N - 1][0] == 1:
-        # 이동 방향
         direction = total_moves % 4
 
         for i in range(next_moves):
@@ -94,19 +93,52 @@ def reverse_spiral_array_v2(N: int):
             result[y][x] = current + 1
             current += 1
 
-        # 다음 이동 횟수 증가
         if result[0][0] == 1 and not total_moves & 1:
             next_moves += 1
 
-        # 총 이동 횟수 증가
         total_moves += 1
 
     width = 2 if N * N < 10 else len(str(N * N))
 
-    # 배열의 모든 원소 하나씩 출력
     for y in range(N):
         for x in range(N):
-            # 배열 오른쪽 정렬
+            print(str(result[y][x]).rjust(width), end=' ')
+
+        print()
+
+
+def reverse_spiral_array_v3(N: int):
+    if not N & 1:
+        raise SystemExit('error: input must be an odd number')
+
+    result = [x[:] for x in [[1] * N] * N]
+
+    initial_component = int((N - 1) / 2)
+    y, x = initial_component, initial_component
+
+    total_moves = 0
+    next_moves = 0
+    current = 2
+
+    while current < N * N:
+        direction = total_moves % 4
+
+        for i in range(next_moves):
+            x += (1 - direction & 1) * (direction - 1)
+            y += (direction & 1) * (2 - direction)
+
+            result[y][x] = current
+            current += 1
+
+        if result[0][0] == 1 and 1 - total_moves & 1:
+            next_moves += 1
+
+        total_moves += 1
+
+    width = 2 if N * N < 10 else len(str(N * N))
+
+    for y in range(N):
+        for x in range(N):
             print(str(result[y][x]).rjust(width), end=' ')
 
         print()
@@ -116,5 +148,4 @@ if __name__ == '__main__':
     # 입력값
     N = int(input())
 
-    reverse_spiral_array_v1(N)
-    reverse_spiral_array_v2(N)
+    reverse_spiral_array_v3(N)
