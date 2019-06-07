@@ -120,7 +120,7 @@ def reverse_spiral_array_v3(N: int):
     next_moves = 0
     current = 2
 
-    while N > 1 and result[N - 1][0] == 1:
+    while current < N * N:
         direction = total_moves % 4
 
         for i in range(next_moves):
@@ -130,7 +130,7 @@ def reverse_spiral_array_v3(N: int):
             result[y][x] = current
             current += 1
 
-        if result[0][0] == 1 and 1 - (total_moves & 1):
+        if result[0][0] == 1 and 1 - total_moves & 1:
             next_moves += 1
 
         total_moves += 1
@@ -148,5 +148,4 @@ if __name__ == '__main__':
     # 입력값
     N = int(input())
 
-    reverse_spiral_array_v1(N)
-    reverse_spiral_array_v2(N)
+    reverse_spiral_array_v3(N)
