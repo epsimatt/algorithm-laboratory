@@ -143,7 +143,6 @@ def reverse_spiral_array_v3(N: int):
 
         print()
 
-
 if __name__ == '__main__':
     # 입력값
     N = int(input())
