@@ -1,12 +1,11 @@
-"""
+# 정렬과 탐색
+
 정렬 (sorting)은 기본적인 알고리즘 디자인 문제 중 하나이다. 배열의 원소가 정렬되어 있으면 데이터를 더 빠르게 처리할 수
 있기 때문에, 대다수의 효율적인 알고리즘은 정렬을 사용한다. 일반적으로, 효율적인 정렬 알고리즘의 시간 복잡도는
-O(n * log n)이라고 알려져 있다.
+O(n * log n)이라고 알려져 있다. 버블 정렬 (bubble sort)처럼 구현이 간단한 알고리즘의 시간 복잡도는 O(n^2) 정도인데, 
+이러한 알고리즘은 보통 두 개의 중첩된 반복문이 있고 코드가 비교적 단순하고 짧은 것이 특징이다.
 
-버블 정렬 (bubble sort)처럼 구현이 간단한 알고리즘의 시간 복잡도는 O(n^2) 정도이다. 이러한 알고리즘은 보통 두 개의 중첩된
-반복문이 있고 코드가 비교적 단순하고 짧은 것이 특징이다.
-
-...
+## 분할 정복
 
 분할 정복 (divide and conquer / divide et impera)는 복잡한 문제를 작은 문제로 분해한 뒤에, 작은 문제의 해답을 모아 원래의 문제의 답을 구하는
 문제 해결 방법이다. 분할 정복은 크게 세 단계로 나눌 수 있다. 첫 번째 단계는 복잡한 문제를 작은 문제로 분해하는
@@ -15,11 +14,11 @@ O(n * log n)이라고 알려져 있다.
 팀 정렬 (https://hackernoon.com/timsort-the-fastest-sorting-algorithm-youve-never-heard-of-36b28417f399) 등이
 있다.
 
-...
+## 탐색
 
 배열에서 특정 원소를 찾는 일반적인 방법은 아래와 같이 `for` 반복문을 사용해서 배열에 들어 있는 모든 원소를 확인하는 것이다.
 
-```
+```c
 for (int i = 0; i < n; i++) {
     if (array[i] == x) {
         // x found at index i
@@ -31,8 +30,9 @@ for (int i = 0; i < n; i++) {
 배열의 정렬되지 않은 경우 이 코드는 최선의 선택이 될 수 있지만, 배열이 정렬되어 있는 경우에는 상황이 달라진다.
 배열이 이미 정렬되어 있는 경우, 이진 탐색 알고리즘을 사용하면 시간 복잡도가 `O(log n)`이 되어, 실행 시간이 매우 짧아진다.
 
-"""
+...
 
+```python
 from typing import List
 
 import timeit
@@ -163,5 +163,5 @@ if __name__ == '__main__':
     result_merge = timeit.timeit('merge_sort([4, 8, 6, 5, 2, 1, 3, 9, 7, 10], 0, 9)',
                                      setup="from __main__ import merge_sort", number=10000)
 
-    # 0.284700311 0.251777021 0.5708897279999999
     print(result_bubble, result_selection, result_merge)
+```

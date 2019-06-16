@@ -10,7 +10,7 @@
 
 ## 시간 복잡도 계산 방법
 
-- 반복문이 k개 중첩되어 있을 때, 이 알고리즘의 시간 복잡도는 O(n^k)이다.
+- 반복문이 k개 중첩되어 있을 때, 이 알고리즘의 시간 복잡도는 `O(n^k)`이다.
 - 알고리즘이 여러 단계 (phase)로 나누어져 있을 때, 이 알고리즘의 시간 복잡도는 가장 큰 시간 복잡도를 가지는 단계의
 시간 복잡도이다.
 - 변수의 개수는 알고리즘의 시간 복잡도에 영향을 준다.
@@ -18,24 +18,24 @@
 호출되었을 때 시간 복잡도는 어떻게 되는지에 따라 달라진다.
 
 ## 시간 복잡도 예시
-- O(1): 입력값의 크기에 영향을 받지 않는 상수 시간 알고리즘 (constant-time algorithm)
-- O(log n): 입력값의 크기를 각 단계마다 줄여나가는 로그 알고리즘 (logarithmic algorithm)
-- O(√n): O(log n)보다는 느리지만 O(n)보다는 빠른, 제곱근 알고리즘 (square root algorithm)
-- O(n): 모든 경우의 수를 하나하나씩 다 따지는 선형 알고리즘 (linear algorithm)
-- O(n * log n): 입력값을 정렬하는 알고리즘이거나 (가장 효율적인 정렬 알고리즘의 시간 복잡도가 O(n * log n)이기 때문에)
-연산 수행 시간이 O(log n)정도 걸리는 자료 구조를 사용하는 알고리즘
-- O(n^2), O(n^3): 여러 개의 반복문이 중첩되어 있는 알고리즘 (quadratic / cubic algorithm)
-- O(2^n): 입력값의 모든 부분집합을 찾는 알고리즘
-- O(n!): 서로 다른 n개에서 중복 없이 r개를 뽑아 나열하는 순열 (permutation)
+- `O(1)`: 입력값의 크기에 영향을 받지 않는 상수 시간 알고리즘 (constant-time algorithm)
+- `O(log n)`: 입력값의 크기를 각 단계마다 줄여나가는 로그 알고리즘 (logarithmic algorithm)
+- `O(√n)`: `O(log n)`보다는 느리지만 `O(n)`보다는 빠른, 제곱근 알고리즘 (square root algorithm)
+- `O(n)`: 모든 경우의 수를 하나하나씩 다 따지는 선형 알고리즘 (linear algorithm)
+- `O(n * log n)`: 입력값을 정렬하는 알고리즘이거나 (가장 효율적인 정렬 알고리즘의 시간 복잡도가 `O(n * log n)`이기 때문에)
+연산 수행 시간이 `O(log n)`정도 걸리는 자료 구조를 사용하는 알고리즘
+- `O(n^2)`, `O(n^3)`: 여러 개의 반복문이 중첩되어 있는 알고리즘 (quadratic / cubic algorithm)
+- `O(2^n)`: 입력값의 모든 부분집합을 찾는 알고리즘
+- `O(n!)`: 서로 다른 n개에서 중복 없이 r개를 뽑아 나열하는 순열 (permutation)
 
 ## 알고리즘의 효율성 평가하기 
 (input size, required time complexity)
-- (n <= 10, O(n!))
-- (n <= 20, O(2^n))
-- (n <= 500, O(n^3))
-- (n <= 5000, O(n^2))
-- (n <= 10^6, O(n * log n) or O(n))
-- (n is large, O(1) or O(log n))
+- (n <= 10, `O(n!)`)
+- (n <= 20, `O(2^n)`)
+- (n <= 500, `O(n^3)`)
+- (n <= 5000, `O(n^2)`)
+- (n <= 10^6, `O(n * log n)` or `O(n)`)
+- (n is large, `O(1)` or `O(log n)`)
 
 일반적으로, 알고리즘의 시간 복잡도가 최악의 경우 `O(n^k)` (단, `k`는 상수)일 때, 이 알고리즘을 다항 시간 알고리즘
 (polynomial algorithm)이라고 한다. `O(2^n)`과 `O(n!)`을 제외한 위 예시의 모든 알고리즘은 다항 시간 알고리즘이다.
@@ -83,4 +83,5 @@ def recursion_two(n: int):
 ```
 
 > 참고: Big-O Algorithm Complexity Cheat Sheet
+>
 > http://bigocheatsheet.com/
