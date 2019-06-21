@@ -38,9 +38,11 @@ from typing import List
 import timeit
 
 
-# 선형 검색 알고리즘을 사용해 배열의 모든 원소를 하나하나 확인해가며 특정 원소를 찾는다.
-# 시간 복잡도: O(n)
 def linear_search(arr: List[int], x: int) -> int:
+    """
+    선형 검색 알고리즘을 사용해 배열의 모든 원소를 하나하나 확인해가며 특정 원소를 찾는다.
+    (시간 복잡도: O(n))
+    """
     for index, element in enumerate(arr):
         if element == x:
             return index
@@ -48,9 +50,11 @@ def linear_search(arr: List[int], x: int) -> int:
     return -1
 
 
-# 이진 탐색 알고리즘을 사용해 정렬되어 있는 배열에서 특정한 원소를 찾는다.
-# 시간 복잡도: O(log n)
 def binary_search(arr: List[int], x: int) -> int:
+    """
+    이진 탐색 알고리즘을 사용해 정렬되어 있는 배열에서 특정한 원소를 찾는다.
+    (시간 복잡도: O(log n))
+    """
     left_index = 0
     right_index = len(arr) - 1
 
@@ -71,9 +75,11 @@ def binary_search(arr: List[int], x: int) -> int:
     return -1
 
 
-# 배열의 인접한 두 원소의 순서를 바꾸어, 큰 원소일수록 오른쪽으로 가게 하는 버블 정렬을 실행한다.
-# 시간 복잡도: O(n^2)
 def bubble_sort(arr: List[int]):
+    """
+    배열의 인접한 두 원소의 순서를 바꾸어, 큰 원소일수록 오른쪽으로 가게 하는 버블 정렬을 실행한다.
+    (시간 복잡도: O(n^2))
+    """
     n = len(arr)
 
     # 정렬이 끝난 원소의 index
@@ -86,11 +92,12 @@ def bubble_sort(arr: List[int]):
                 arr[j] = tmp
 
 
-# 배열을 두 부분으로 나누어 각각의 배열을 정렬한 다음, 두 배열을 하나로 합치는 합병 정렬을 실행한다.
-# 시간 복잡도: O(n * log n)
 def merge_sort(arr: List[int], left_index: int, right_index: int):
     """
-    병합 정렬의 순서
+    배열을 두 부분으로 나누어 각각의 배열을 정렬한 다음, 두 배열을 하나로 합치는 병합 정렬을 실행한다.
+    (시간 복잡도: O(n * log n))
+    
+    병합 정렬의 실행 순서는 아래와 같다.
 
     1. `left_index`와 `right_index`의 값이 같다면, 아무 것도 하지 않는다.
     2. 배열의 기준값의 index를 구한다.
@@ -131,18 +138,20 @@ def merge_sort(arr: List[int], left_index: int, right_index: int):
             arr[k] = right_arr[j]
             j += 1
             k += 1
-            
 
-# 정해진 배열에서 최솟값을 선택해 맨 왼쪽으로 옮기는 선택 정렬을 실행한다.
-# 시간 복잡도: O(n^2)
+
 def selection_sort(arr: List[int]):
+    """
+    정해진 배열에서 최솟값을 선택해 맨 왼쪽으로 옮기는 선택 정렬을 실행한다.
+    (시간 복잡도: O(n^2))
+    """
     n = len(arr)
 
     """
     i: 0, j: arr[1..N]
     i: 1, j: arr[2..N]
     i: 2, j: arr[3..N]
-    
+
     ...
     """
     for i in range(0, n):
@@ -155,13 +164,13 @@ def selection_sort(arr: List[int]):
 
 if __name__ == '__main__':
     result_bubble = timeit.timeit('bubble_sort([4, 8, 6, 5, 2, 1, 3, 9, 7, 10])',
-                              setup="from __main__ import bubble_sort", number=10000)
+                                  setup="from __main__ import bubble_sort", number=10000)
 
     result_selection = timeit.timeit('selection_sort([4, 8, 6, 5, 2, 1, 3, 9, 7, 10])',
-                                  setup="from __main__ import selection_sort", number=10000)
+                                     setup="from __main__ import selection_sort", number=10000)
 
     result_merge = timeit.timeit('merge_sort([4, 8, 6, 5, 2, 1, 3, 9, 7, 10], 0, 9)',
-                                     setup="from __main__ import merge_sort", number=10000)
+                                 setup="from __main__ import merge_sort", number=10000)
 
     print(result_bubble, result_selection, result_merge)
 ```
