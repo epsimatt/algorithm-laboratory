@@ -1,4 +1,4 @@
-# runtime: 77.53%, memory usage: 0%
+# runtime: 85.28%, memory usage: 43.17%
 def toHex(num: int) -> str:
     result = ""
 
@@ -15,6 +15,4 @@ def toHex(num: int) -> str:
 
 if __name__ == '__main__':
     result = toHex(26)
-    print(result)
-
-    pass
+    print(result) # "1a"

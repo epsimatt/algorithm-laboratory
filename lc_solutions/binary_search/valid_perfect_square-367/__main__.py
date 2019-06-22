@@ -1,3 +1,4 @@
+# runtime: 96.66%, memory usage: 10.71%
 def isPerfectSquare(num: int) -> bool:
     low = 1
     high = num
