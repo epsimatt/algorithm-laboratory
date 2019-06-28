@@ -40,8 +40,26 @@ def twoSum_v3(nums: List[int], target: int) -> List[int]:
     return [-1, -1]
 
 
+# runtime: 97.65%, memory usage: 12.50%
+def twoSum_v4(nums: List[int], target: int) -> List[int]:
+    values = sorted(zip(nums, range(len(nums))))
+
+    low = 0
+    high = len(values) - 1
+
+    while low < high:
+        if values[low][0] + values[high][0] == target:
+            return [values[low][1], values[high][1]]
+        elif values[low][0] + values[high][0] > target:
+            high -= 1
+        else:
+            low += 1
+
+    return [-1, -1]
+
+
 if __name__ == '__main__':
-    print(twoSum_v3([2, 7, 11, 15], 9)) # [0, 1]
-    print(twoSum_v3([3, 3], 6)) # [0, 1]
-    print(twoSum_v3([3, 2, 4], 6))  # [1, 2]
-    print(twoSum_v3([3, 2, 3], 6))  # [0, 2]
+    print(twoSum_v4([2, 7, 11, 15], 9)) # [0, 1]
+    print(twoSum_v4([3, 3], 6)) # [0, 1]
+    print(twoSum_v4([3, 2, 4], 6))  # [1, 2]
+    print(twoSum_v4([3, 2, 3], 6))  # [0, 2]
