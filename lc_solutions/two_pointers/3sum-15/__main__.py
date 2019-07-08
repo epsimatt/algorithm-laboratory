@@ -108,7 +108,7 @@ def threeSum_v4(nums: List[int]) -> List[List[int]]:
 
         if i > 0 and nums[i] == nums[i - 1]:
             continue
-
+            
         target = -nums[i]
 
         low = i + 1
@@ -118,16 +118,16 @@ def threeSum_v4(nums: List[int]) -> List[List[int]]:
             if nums[low] + nums[high] == target:
                 result.append([nums[i], nums[low], nums[high]])
 
-                low += 1
-                high -= 1
-
                 # 왼쪽부터 중복 원소 건너뛰기
-                while low < high and nums[low] == nums[low - 1]:
+                while low < high and nums[low] == nums[low + 1]:
                     low += 1
 
                 # 오른쪽부터 중복 원소 건너뛰기
-                while low < high and nums[high] == nums[high + 1]:
+                while low < high and nums[high] == nums[high - 1]:
                     high -= 1
+
+                low += 1
+                high -= 1
             elif nums[low] + nums[high] < target:
                 low += 1
             else:
