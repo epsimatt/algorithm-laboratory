@@ -55,3 +55,72 @@
 
 그래프 탐색 알고리즘을 사용하면 그래프의 다양한 특성에 대해 알 수 있게 되는데, 일반적으로는 너비 우선 탐색 알고리즘보다는
 구현이 쉬운 깊이 우선 탐색을 많이 사용한다.
+
+...
+
+```python
+from typing import List
+
+N = 7
+
+unweighted_adjacency_list: List[List[int]] = [x[:] for x in [[]] * N]
+
+dfs_visited_nodes: List[bool] = [False] * N
+
+bfs_distance: List[int] = [0] * N
+bfs_queue: List[int] = []
+bfs_visited_nodes: List[bool] = [False] * N
+
+
+def depth_first_search(node: int):
+    if dfs_visited_nodes[node]:
+        return
+    else:
+        dfs_visited_nodes[node] = True
+        print(f'visited node {node}, search: {unweighted_adjacency_list[node]}')
+
+        for s in unweighted_adjacency_list[node]:
+            depth_first_search(s)
+
+
+def breadth_first_search(node: int):
+    bfs_visited_nodes[node] = True
+    bfs_distance[node] = 0
+
+    print(f'visited node {node}, distance: {bfs_distance[node]}')
+
+    bfs_queue.append(node)
+
+    while bfs_queue:
+        s = bfs_queue[0]
+        bfs_queue.pop(0)
+
+        for u in unweighted_adjacency_list[s]:
+            if bfs_visited_nodes[u]:
+                continue
+            else:
+                bfs_visited_nodes[u] = True
+                bfs_distance[u] = bfs_distance[s] + 1
+
+                print(f'visited node {u}, distance: {bfs_distance[u]}')
+
+                bfs_queue.append(u)
+
+
+if __name__ == '__main__':
+    unweighted_adjacency_list[1].append(2)
+    unweighted_adjacency_list[1].append(4)
+    unweighted_adjacency_list[2].append(1)
+    unweighted_adjacency_list[2].append(3)
+    unweighted_adjacency_list[2].append(5)
+    unweighted_adjacency_list[3].append(2)
+    unweighted_adjacency_list[3].append(6)
+    unweighted_adjacency_list[4].append(1)
+    unweighted_adjacency_list[5].append(2)
+    unweighted_adjacency_list[5].append(6)
+    unweighted_adjacency_list[6].append(3)
+    unweighted_adjacency_list[6].append(5)
+
+    depth_first_search(1)
+    breadth_first_search(1)
+```
