@@ -58,3 +58,46 @@
 꼭짓점에서 나가는 간선의 개수를 말한다. 아래 그래프에서 꼭짓점 `2`의 진입 차수는 2, 진출 차수는 1이다.
 
 ![꼭짓점 `2`의 진입 차수와 진출 차수](./images/11/09.png)
+
+...
+
+```python
+from typing import List
+
+N = 5
+
+unweighted_adjacency_list: List[List[int]] = [x[:] for x in [[]] * N]
+weighted_adjacency_list: List[List[List[int]]] = [x[:] for x in [[]] * N]
+unweighted_edge_list: List[List[int]] = []
+weighted_edge_list: List[List[int]] = []
+
+if __name__ == '__main__':
+    unweighted_adjacency_list[1].append(2)
+    unweighted_adjacency_list[2].append(3)
+    unweighted_adjacency_list[2].append(4)
+    unweighted_adjacency_list[3].append(4)
+    unweighted_adjacency_list[4].append(1)
+
+    weighted_adjacency_list[1].append([2, 5])
+    weighted_adjacency_list[2].append([3, 7])
+    weighted_adjacency_list[2].append([4, 6])
+    weighted_adjacency_list[3].append([4, 5])
+    weighted_adjacency_list[4].append([1, 2])
+
+    unweighted_edge_list.append([1, 2])
+    unweighted_edge_list.append([2, 3])
+    unweighted_edge_list.append([2, 4])
+    unweighted_edge_list.append([3, 4])
+    unweighted_edge_list.append([4, 1])
+
+    weighted_edge_list.append([1, 2, 5])
+    weighted_edge_list.append([2, 3, 7])
+    weighted_edge_list.append([2, 4, 6])
+    weighted_edge_list.append([3, 4, 5])
+    weighted_edge_list.append([4, 1, 2])
+
+    print(unweighted_adjacency_list)
+    print(weighted_adjacency_list)
+    print(unweighted_edge_list)
+    print(weighted_edge_list)
+```

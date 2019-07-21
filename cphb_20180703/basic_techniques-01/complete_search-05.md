@@ -19,8 +19,11 @@
 from typing import List
 
 
-# 집합 `s`의 모든 부분집합을 찾는다.
 def subsets(s: List[int]) -> List[List[int]]:
+    """
+    집합 `s`의 모든 부분집합을 찾는다.
+    """
+    
     result = []
 
     # 집합 `s`의 각 원소는 비트 1개와 대응한다.

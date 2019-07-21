@@ -16,8 +16,10 @@ n개의 비트가 `0`부터 `2 ^ n - 1`까지의 수를 나타낼 수 있다.
 `00000000000000000000000100011010`이 된다.
 
 ```python
-# 길이가 같은 두 문자열 `a`, `b`의 해밍 거리를 구한다.
 def hamming_distance(a: str, b: str):
+    """
+    길이가 같은 두 문자열 `a`, `b`의 해밍 거리를 구한다.
+    """
     distance = 0
 
     for i in range(0, len(a)):
@@ -27,8 +29,11 @@ def hamming_distance(a: str, b: str):
     return distance
 
 
-# `x`를 32개의 비트로 나타낸다.
 def print_binary_32bit(x: int):
+    """
+    `x`를 32개의 비트로 나타낸다.
+    """
+    
     result = ""
 
     for i in range(0, 32):
