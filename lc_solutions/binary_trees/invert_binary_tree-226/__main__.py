@@ -7,21 +7,17 @@ class TreeNode:
 
 # runtime: 91.27%, memory usage: 5.41%
 def invertTree_recursive(root: TreeNode) -> TreeNode:
-    if not root:
-        return root
-    elif not root.left and not root.right:
+    if not root or (not root.left and not root.right):
         return root
     else:
-        result = root
+        invertTree_recursive(root.left)
+        invertTree_recursive(root.right)
 
-        invertTree_recursive(result.left)
-        invertTree_recursive(result.right)
+        temp = root.left
+        root.left = root.right
+        root.right = temp
 
-        temp = result.left
-        result.left = result.right
-        result.right = temp
-
-        return result
+    return root
 
 
 if __name__ == '__main__':
