@@ -1,13 +1,10 @@
-# runtime: 99.97%, memory usage: 66.23%
-def hammingDistance(x: 'int', y: 'int') -> 'int':
-    diff = x ^ y
-    result = 0
+# runtime: 98.03%, memory usage: 5.41%
+def hammingDistance(x: int, y: int) -> int:
+    target, result = x ^ y, 0
 
-    while diff != 0:
-        if diff % 2 != 0:
-            result += 1
-
-        diff >>= 1
+    while target > 0:
+        result += target & 0b1
+        target >>= 1
 
     return result
 
